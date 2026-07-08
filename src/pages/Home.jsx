@@ -13,8 +13,7 @@ import { ClipLoader } from 'react-spinners';
 import { toast } from 'react-toastify';
 
 const Home = () => {
-
-  // ✅ Fixed typos in options
+  
   const options = [
     { value: 'html-css', label: 'HTML + CSS' },
     { value: 'html-tailwind', label: 'HTML + Tailwind CSS' },
@@ -42,18 +41,15 @@ const Home = () => {
     return () => observer.disconnect();
   }, []);
 
-  // ✅ Extract code safely
   function extractCode(response) {
     const match = response.match(/```(?:\w+)?\n?([\s\S]*?)```/);
     return match ? match[1].trim() : response.trim();
   }
 
-  // ⚠️ API Key (you said you want it inside the file)
   const ai = new GoogleGenAI({
     apiKey: "AIzaSyAPKgp6ctanIWsdtk5L1XQ1KCq_1cvSibo"
   });
 
-  // ✅ Generate code
   async function getResponse() {
     if (!prompt.trim()) return toast.error("Please describe your component first");
 
@@ -88,7 +84,6 @@ Requirements:
     }
   };
 
-  // ✅ Copy Code
   const copyCode = async () => {
     if (!code.trim()) return toast.error("No code to copy");
     try {
@@ -100,7 +95,6 @@ Requirements:
     }
   };
 
-  // ✅ Download Code
   const downnloadFile = () => {
     if (!code.trim()) return toast.error("No code to download");
 
